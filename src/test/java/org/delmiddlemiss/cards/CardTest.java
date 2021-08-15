@@ -6,8 +6,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class CardTest
-{
+public class CardTest {
+
     private static Card card1;
     private static Card card2;
     private static Card card3;

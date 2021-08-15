@@ -38,7 +38,7 @@ class Deck {
 
     public Card deal() throws IllegalStateException{
         if(numCardsRemaining == 0){
-            throw new IllegalStateException("Deck empty");
+            throw new IllegalStateException("Deck is empty: cannot deal");
         }
         Card dealtCard = cards.get(cards.size() - 1);
         cards.remove(cards.size() - 1);

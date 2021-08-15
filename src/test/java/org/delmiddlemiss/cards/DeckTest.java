@@ -1,16 +1,21 @@
 package org.delmiddlemiss.cards;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
 
 import static org.junit.Assert.assertTrue;
 
 public class DeckTest {
+
     private Deck sortedDeck;
     private Deck randomDeck;
     private int numToDraw = CardSuit.values().length * CardValue.values().length;
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
 
     @Before
     public void init() {
@@ -35,11 +40,13 @@ public class DeckTest {
         }
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void dealFromEmptyDeckRaisesException() {
+    @Test
+    public void dealFromEmptyDeckRaisesSpecificException() {
         for(int i = 1; i <= numToDraw; i++){
             Card card = randomDeck.deal();
         }
+        exceptionRule.expect(IllegalStateException.class);
+        exceptionRule.expectMessage("Deck is empty: cannot deal");
         randomDeck.deal();
     }
 
