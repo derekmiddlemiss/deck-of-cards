@@ -11,24 +11,26 @@ public class CardTest
     private static Card card1;
     private static Card card2;
     private static Card card3;
+    private static Card dupCard1;
 
     @BeforeClass
     public static void init(){
-        card1 = new Card(Value.ACE, Suit.SPADES);
-        card2 = new Card(Value.TEN, Suit.SPADES);
-        card3 = new Card(Value.KING, Suit.CLUBS);
+        card1 = new Card(CardValue.ACE, CardSuit.SPADES);
+        card2 = new Card(CardValue.TEN, CardSuit.SPADES);
+        card3 = new Card(CardValue.KING, CardSuit.CLUBS);
+        dupCard1 = new Card(CardValue.ACE, CardSuit.SPADES);
     }
 
     @Test
     public void cardHasSuit()
     {
-        assertEquals(Suit.SPADES, card1.getSuit());
+        assertEquals(CardSuit.SPADES, card1.getSuit());
     }
 
     @Test
     public void cardHasValue()
     {
-        assertEquals(Value.ACE, card1.getValue());
+        assertEquals(CardValue.ACE, card1.getValue());
     }
 
     @Test
@@ -49,7 +51,7 @@ public class CardTest
     public void sameCardCompare()
     {
         // Edge case, this should never come up in normal use
-        assertEquals(0, card1.compareTo(card1));
+        assertEquals(0, card1.compareTo(dupCard1));
     }
 
 

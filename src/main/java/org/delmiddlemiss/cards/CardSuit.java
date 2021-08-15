@@ -1,6 +1,6 @@
 package org.delmiddlemiss.cards;
 
-enum Suit {
+enum CardSuit {
     // Note - this order used for sorting
     CLUBS,
     DIAMONDS,

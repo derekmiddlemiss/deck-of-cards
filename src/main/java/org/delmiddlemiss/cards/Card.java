@@ -2,19 +2,19 @@ package org.delmiddlemiss.cards;
 
 class Card implements Comparable<Card>{
 
-    private final Value value;
-    private final Suit suit;
+    private final CardValue value;
+    private final CardSuit suit;
 
-    Card(Value value, Suit suit){
+    Card(CardValue value, CardSuit suit){
         this.value = value;
         this.suit = suit;
     }
 
-    public Value getValue(){
+    public CardValue getValue(){
         return value;
     }
 
-    public Suit getSuit(){
+    public CardSuit getSuit(){
         return suit;
     }
 

@@ -1,6 +1,6 @@
 package org.delmiddlemiss.cards;
 
-enum Value {
+enum CardValue {
     // Note - this order used for sorting
     TWO,
     THREE,
