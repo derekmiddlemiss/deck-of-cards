@@ -20,10 +20,10 @@ class Card implements Comparable<Card>{
 
     @Override
     public int compareTo(Card card){
-        int suitComparison = this.suit.compareTo(card.getSuit());
+        int suitComparison = suit.compareTo(card.getSuit());
         if(suitComparison == 0){
             // same suit - order by value
-            return this.value.compareTo(card.getValue());
+            return value.compareTo(card.getValue());
         } else {
             // different suit - order by suit
             return suitComparison;
