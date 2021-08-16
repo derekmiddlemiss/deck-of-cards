@@ -2,6 +2,7 @@ package org.delmiddlemiss.cards;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,9 +10,12 @@ class Deck {
 
     private List<Card> cards;
     private int numCardsRemaining;
+    private final Comparator<Card> cardComparator;
 
-    Deck(){
+
+    Deck(Comparator<Card> cardComparator){
         fillCardsAndShuffle();
+        this.cardComparator = cardComparator;
     }
 
     public void fillCardsAndShuffle(){
@@ -32,7 +36,7 @@ class Deck {
 
     public void sort(){
         cards = cards.stream()
-                .sorted()
+                .sorted((c1, c2) -> cardComparator.compare(c1, c2))
                 .collect(Collectors.toList());
     }
 

@@ -1,6 +1,6 @@
 package org.delmiddlemiss.cards;
 
-class Card implements Comparable<Card>{
+class Card {
 
     private final CardValue value;
     private final CardSuit suit;
@@ -16,18 +16,6 @@ class Card implements Comparable<Card>{
 
     public CardSuit getSuit(){
         return suit;
-    }
-
-    @Override
-    public int compareTo(Card card){
-        int suitComparison = suit.compareTo(card.getSuit());
-        if(suitComparison == 0){
-            // same suit - order by value
-            return value.compareTo(card.getValue());
-        } else {
-            // different suit - order by suit
-            return suitComparison;
-        }
     }
 
     @Override

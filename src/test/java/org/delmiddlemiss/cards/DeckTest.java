@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 import static org.junit.Assert.assertTrue;
 
@@ -13,14 +14,16 @@ public class DeckTest {
 
     private Deck sortedDeck;
     private Deck randomDeck;
-    private int numToDraw = CardSuit.values().length * CardValue.values().length;
+    private final int numToDraw = CardSuit.values().length * CardValue.values().length;
+    private final Comparator<Card> aceHighCardComparator = new AceHighCardComparator();
+
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
 
     @Before
     public void init() {
-        randomDeck = new Deck();
-        sortedDeck = new Deck();
+        randomDeck = new Deck(aceHighCardComparator);
+        sortedDeck = new Deck(aceHighCardComparator);
         sortedDeck.sort();
     }
 
@@ -68,10 +71,10 @@ public class DeckTest {
         Card lastCard = sortedDeck.deal();
         for(int i = 2; i <= numToDraw; i++){
             Card thisCard = sortedDeck.deal();
-            // if cards sorted in order: lowest at bottom of pile and
-            // highest at top of pile, then each card pulled from top of pile
-            // should be lower than last card pulled from top of pile
-            assertTrue(thisCard.compareTo(lastCard) < 0);
+            /* If cards sorted in order: lowest at bottom of pile and highest at top
+             * of pile, then each card after first pulled from top of pile should be
+             * lower than last card pulled from top of pile */
+            assertTrue(aceHighCardComparator.compare(thisCard, lastCard) < 0);
             lastCard = thisCard;
         }
     }
