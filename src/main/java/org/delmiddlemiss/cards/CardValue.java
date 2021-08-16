@@ -1,7 +1,7 @@
 package org.delmiddlemiss.cards;
 
 enum CardValue {
-    // Note - this order used for sorting
+    // Note - this sets default sort order
     TWO,
     THREE,
     FOUR,
